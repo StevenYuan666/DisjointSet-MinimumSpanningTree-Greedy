@@ -19,9 +19,6 @@ class Assignment implements Comparator<Assignment>{
 	
 	/**
 	 * This method is used to sort to compare assignment objects for sorting. 
-	 * Return -1 if a1 > a2
-	 * Return 1 if a1 < a2
-	 * Return 0 if a1 = a2 
 	 */
 	@Override
 	public int compare(Assignment a1, Assignment a2) {
@@ -61,11 +58,12 @@ public class HW_Sched {
 		//Order will depend on how compare function is implemented
 		Collections.sort(Assignments, new Assignment());
 		
-		// If schedule[i] has a value -1, it indicates that the 
-		// i'th timeslot in the schedule is empty
-		int[] schedule = new int[lastDeadline];
-		for (int i=0; i < schedule.length; ++i) {
-			schedule[i] = -1;
+		// If homeworkPlan[i] has a value -1, it indicates that the 
+		// i'th timeslot in the homeworkPlan is empty
+		//homeworkPlan contains the homework schedule between now and the last deadline
+		int[] homeworkPlan = new int[lastDeadline];
+		for (int i=0; i < homeworkPlan.length; ++i) {
+			homeworkPlan[i] = -1;
 		}
 		
 		
@@ -74,7 +72,7 @@ public class HW_Sched {
 		
 	
 		
-		return schedule;
+		return homeworkPlan;
 	}
 }
 	
