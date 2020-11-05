@@ -1,6 +1,7 @@
 
 public class Tester {
 	static int scoreDisjoints = 0;
+	static int scoreKruskal = 0;
 	
 	public static void main(String[] args) {
 		//Test the find function in DisjointSets class
@@ -18,6 +19,14 @@ public class Tester {
 		DisjointSetsTest9();
 		DisjointSetsTest10();
 		System.out.println("Completed the tests for DisjointSets Class. Pts[" + scoreDisjoints + " / 10]");
+		//Test the Minimum Spanning Tree
+		System.out.println("-----Testing the result of Minimum Spanning Tree in Kruskal class-----");
+		KruskalTest1();
+		KruskalTest2();
+		KruskalTest3();
+		KruskalTest4();
+		KruskalTest5();
+		System.out.println("Completed the tests for DisjointSets Class. Pts[" + scoreKruskal + " / 5]");
 	}
 	
 	public static void DisjointSetsTest1() {
@@ -215,6 +224,81 @@ public class Tester {
 		}
 		else {
 			System.out.println("DisjointSets.Test10 failed.  Pts[0 / 1]");
+		}
+	}
+	
+	//Test case from the template
+	public static void KruskalTest1() {
+		//If need, please change to your own absolute directory
+		WGraph g1 = new WGraph("/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A2/A2/src/g1.txt");
+		WGraph g1Result = new WGraph("/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A2/A2/src/g1Result.txt");
+		WGraph myResult = Kruskal.kruskal(g1);
+		if(myResult.toString().equals(g1Result.toString())) {
+			scoreKruskal ++;
+			System.out.println("Kruskal.Test1 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("Kruskal.Test1 failed.  Pts[0 / 1]");
+		}
+	}
+	
+	//Test case from example of Kruskal in class
+	public static void KruskalTest2() {
+		//If need, please change to your own absolute directory
+		WGraph g2 = new WGraph("/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A2/A2/src/g2.txt");
+		WGraph g2Result = new WGraph("/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A2/A2/src/g2Result.txt");
+		WGraph myResult = Kruskal.kruskal(g2);
+		if(myResult.toString().equals(g2Result.toString())) {
+			scoreKruskal ++;
+			System.out.println("Kruskal.Test2 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("Kruskal.Test2 failed.  Pts[0 / 1]");
+		}
+	}
+	
+	//Test case from example of Prim in class
+	public static void KruskalTest3() {
+		//If need, please change to your own absolute directory
+		WGraph g3 = new WGraph("/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A2/A2/src/g3.txt");
+		WGraph g3Result = new WGraph("/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A2/A2/src/g3Result.txt");
+		WGraph myResult = Kruskal.kruskal(g3);
+		if(myResult.toString().equals(g3Result.toString())) {
+			scoreKruskal ++;
+			System.out.println("Kruskal.Test3 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("Kruskal.Test3 failed.  Pts[0 / 1]");
+		}
+	}
+	
+	//Test case from the exercise of the second midterm on page 12
+	public static void KruskalTest4() {
+		//If need, please change to your own absolute directory
+		WGraph g4 = new WGraph("/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A2/A2/src/g4.txt");
+		WGraph g4Result = new WGraph("/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A2/A2/src/g4Result.txt");
+		WGraph myResult = Kruskal.kruskal(g4);
+		if(myResult.toString().equals(g4Result.toString())) {
+			scoreKruskal ++;
+			System.out.println("Kruskal.Test4 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("Kruskal.Test4 failed.  Pts[0 / 1]");
+		}
+	}
+	
+	//Test case from the exercise of the second midterm on page 15
+	public static void KruskalTest5() {
+		//If need, please change to your own absolute directory
+		WGraph g5 = new WGraph("/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A2/A2/src/g5.txt");
+		WGraph g5Result = new WGraph("/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A2/A2/src/g5Result.txt");
+		WGraph myResult = Kruskal.kruskal(g5);
+		if(myResult.toString().equals(g5Result.toString())) {
+			scoreKruskal ++;
+			System.out.println("Kruskal.Test5 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("Kruskal.Test5 failed.  Pts[0 / 1]");
 		}
 	}
 }
