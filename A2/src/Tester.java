@@ -158,8 +158,8 @@ public class Tester {
 		myset8.union(3, 1);
 		myset8.union(0, 2);
 		myset8.union(3, 0);
-		if(myset8.getRank(myset8.find(1)) == 3 && myset8.getRank(myset8.find(3)) == 3 &&
-				myset8.getRank(myset8.find(0)) == 3 && myset8.getRank(myset8.find(2)) == 3 &&
+		if(myset8.getRank(myset8.find(1)) == 2 && myset8.getRank(myset8.find(3)) == 2 &&
+				myset8.getRank(myset8.find(0)) == 2 && myset8.getRank(myset8.find(2)) == 2 &&
 				myset8.getPar(1) == 2 && myset8.getPar(2) == 2 &&
 				myset8.getPar(0) == 2 && myset8.getPar(3) == 2) {
 			score = 1;
@@ -179,9 +179,9 @@ public class Tester {
 		myset9.union(3, 1);
 		myset9.union(0, 2);
 		myset9.union(3, 4);
-		if(myset9.getRank(myset9.find(1)) == 2 && myset9.getRank(myset9.find(3)) == 2 &&
+		if(myset9.getRank(myset9.find(1)) == 1 && myset9.getRank(myset9.find(3)) == 1 &&
 				myset9.getRank(myset9.find(0)) == 1 && myset9.getRank(myset9.find(2)) == 1 &&
-						myset9.getRank(myset9.find(4)) == 2 &&
+						myset9.getRank(myset9.find(4)) == 1 &&
 				myset9.getPar(1) == 1 && myset9.getPar(2) == 2 &&
 				myset9.getPar(0) == 2 && myset9.getPar(3) == 1 && myset9.getPar(4) == 1) {
 			score = 1;
@@ -202,11 +202,11 @@ public class Tester {
 		myset10.union(0, 2);
 		myset10.union(3, 4);
 		myset10.union(4, 0);
-		if(myset10.getRank(myset10.find(1)) == 4 && myset10.getRank(myset10.find(3)) == 4 &&
-				myset10.getRank(myset10.find(0)) == 4 && myset10.getRank(myset10.find(2)) == 4 &&
-						myset10.getRank(myset10.find(4)) == 4 &&
-				myset10.getPar(1) == 1 && myset10.getPar(2) == 1 &&
-				myset10.getPar(0) == 1 && myset10.getPar(3) == 1 && myset10.getPar(4) == 1) {
+		if(myset10.getRank(myset10.find(1)) == 2 && myset10.getRank(myset10.find(3)) == 2 &&
+				myset10.getRank(myset10.find(0)) == 2 && myset10.getRank(myset10.find(2)) == 2 &&
+						myset10.getRank(myset10.find(4)) == 2 &&
+				myset10.getPar(1) == 2 && myset10.getPar(2) == 2 &&
+				myset10.getPar(0) == 2 && myset10.getPar(3) == 2 && myset10.getPar(4) == 2) {
 			score = 1;
 			scoreDisjoints ++;
 		}

@@ -73,16 +73,17 @@ public class DisjointSets {
     	
     	//implement the union function as we've seen in class
     	if (find(i) != find(j)) {
-    		if(rank[find(i)] <= rank[find(j)]) {
+    		if(rank[find(i)] == rank[find(j)]) {
     			par[find(i)] = find(j);
         		//update the rank
-        		rank[find(j)] += (rank[find(i)] + 1);
+    			rank[find(j)] += 1;
         		return find(j);
+    		}
+    		else if(rank[find(i)] <= rank[find(j)]) {
+    			par[find(i)] = find(j);
     		}
     		else if(rank[find(i)] > rank[find(j)]){
     			par[find(j)] = find(i);
-        		//update the rank
-        		rank[find(i)] += rank[find(j)];
         		return find(i);
     		}
     	}
