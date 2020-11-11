@@ -24,7 +24,23 @@ class Assignment implements Comparator<Assignment>{
 	public int compare(Assignment a1, Assignment a2) {
 		// TODO Implement this
 		
-		
+		//check if two assignment have the same due date
+		if(a1.deadline == a2.deadline) {
+			if(a1.weight > a2.weight) {
+				return -1;
+			}
+			else if (a1.weight < a2.weight){
+				return 1;
+			}
+		}
+		else {
+			if(a1.deadline < a2.deadline) {
+				return -1;
+			}
+			else if (a1.deadline > a2.deadline){
+				return 1;
+			}
+		}
 		return 0;
 	}
 }
@@ -66,9 +82,25 @@ public class HW_Sched {
 			homeworkPlan[i] = -1;
 		}
 		
+		//implement the remaining part of SelectAssignments()
 		
+		int startIndex = 0;
+		for(int i = 0; i < Assignments.size(); i ++) {
+			if(Assignments.get(i).deadline > 0 ){
+				homeworkPlan[0] = Assignments.get(i).number;
+				startIndex = i + 1;
+				break;
+			}
+		}
 		
-		
+		int pointer = 0;
+		for (int i = startIndex ; i < Assignments.size(); i ++) {
+			if (Assignments.get(i).deadline > Assignments.get(pointer).deadline) {
+				pointer ++;
+				if (pointer >= lastDeadline) break;
+				homeworkPlan[pointer] = Assignments.get(i).number;
+			}
+		}
 		
 	
 		

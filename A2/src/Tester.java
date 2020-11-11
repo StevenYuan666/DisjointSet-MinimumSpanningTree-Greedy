@@ -1,7 +1,10 @@
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Tester {
 	static int scoreDisjoints = 0;
 	static int scoreKruskal = 0;
+	static int scoreHW = 0;
 	
 	public static void main(String[] args) {
 		//Test the find function in DisjointSets class
@@ -27,6 +30,24 @@ public class Tester {
 		KruskalTest4();
 		KruskalTest5();
 		System.out.println("Completed the tests for DisjointSets Class. Pts[" + scoreKruskal + " / 5]");
+		//Test the compare function in HW_Sched class
+		System.out.println("-----Testing the \"compare\" function in HW_Sched class-----");
+		CompareTest1();
+		CompareTest2();
+		CompareTest3();
+		CompareTest4();
+		CompareTest5();
+		//Test the SelectAssignments function in HW_Sched class
+		System.out.println("-----Testing the \"SelectAssignments\" function in HW_Sched class-----");
+		SelectAssignmentsTest1();
+		SelectAssignmentsTest2();
+		SelectAssignmentsTest3();
+		SelectAssignmentsTest4();
+		SelectAssignmentsTest5();
+		System.out.println("Completed the tests for HW_Sched Class. Pts[" + scoreHW + " / 10]");
+		int total = scoreDisjoints + scoreKruskal + scoreHW;
+		System.out.println("The tester completed, please check your total score. Pts[" 
+		+ total + " / 25]");
 	}
 	
 	public static void DisjointSetsTest1() {
@@ -299,6 +320,159 @@ public class Tester {
 		}
 		else {
 			System.out.println("Kruskal.Test5 failed.  Pts[0 / 1]");
+		}
+	}
+	
+	public static void CompareTest1() {
+		Assignment a1 = new Assignment(1, 50, 2);
+		Assignment a2 = new Assignment(4, 50, 2);
+		if(a1.compare(a1, a2) == 0) {
+			scoreHW ++;
+			System.out.println("HW_Sched.Test1 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("HW_Sched.Test1 failed. Pts[0 / 1]");
+		}
+	}
+	
+	public static void CompareTest2() {
+		Assignment a1 = new Assignment(1, 50, 3);
+		Assignment a2 = new Assignment(4, 50, 1);
+		if(a1.compare(a1, a2) == 1) {
+			scoreHW ++;
+			System.out.println("HW_Sched.Test2 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("HW_Sched.Test2 failed. Pts[0 / 1]");
+		}
+	}
+	
+	public static void CompareTest3() {
+		Assignment a1 = new Assignment(1, 70, 1);
+		Assignment a2 = new Assignment(4, 50, 1);
+		if(a1.compare(a1, a2) == -1) {
+			scoreHW ++;
+			System.out.println("HW_Sched.Test3 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("HW_Sched.Test3 failed. Pts[0 / 1]");
+		}
+	}
+	
+	public static void CompareTest4() {
+		int[] weights = new int[] {23, 60, 14, 25, 7}; 
+		int[] deadlines = new int[] {3, 1, 2, 1, 3};
+		int m = weights.length;
+		HW_Sched schedule =  new HW_Sched(weights, deadlines, m);
+		Collections.sort(schedule.Assignments, new Assignment());
+		if(schedule.Assignments.get(0).number == 1 && schedule.Assignments.get(1).number == 3 &&
+				schedule.Assignments.get(2).number == 2 && schedule.Assignments.get(3).number == 0
+				&& schedule.Assignments.get(4).number == 4) {
+			scoreHW ++;
+			System.out.println("HW_Sched.Test4 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("HW_Sched.Test4 failed. Pts[0 / 1]");
+		}
+	}
+	
+	public static void CompareTest5() {
+		int[] weights = new int[] {23, 60, 14, 61, 70, 30, 28}; 
+		int[] deadlines = new int[] {3, 1, 2, 1, 3, 5, 4};
+		int m = weights.length;
+		HW_Sched schedule =  new HW_Sched(weights, deadlines, m);
+		Collections.sort(schedule.Assignments, new Assignment());
+		if(schedule.Assignments.get(0).number == 3 && schedule.Assignments.get(1).number == 1 &&
+				schedule.Assignments.get(2).number == 2 && schedule.Assignments.get(3).number == 4
+				&& schedule.Assignments.get(4).number == 0 && schedule.Assignments.get(5).number == 6
+				&& schedule.Assignments.get(6).number == 5) {
+			scoreHW ++;
+			System.out.println("HW_Sched.Test5 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("HW_Sched.Test5 failed. Pts[0 / 1]");
+		}
+	}
+	
+	public static void SelectAssignmentsTest1() {
+		int[] weights = new int[] {23, 60, 14, 25, 7}; 
+		int[] deadlines = new int[] {3, 1, 2, 1, 3};
+		int m = weights.length;
+		HW_Sched schedule =  new HW_Sched(weights, deadlines, m);
+		int [] plan = schedule.SelectAssignments();
+		int [] result = {1, 2, 0};
+		if(Arrays.toString(plan).equals(Arrays.toString(result))) {
+			scoreHW ++;
+			System.out.println("HW_Sched.Test6 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("HW_Sched.Test6 failed. Pts[0 / 1]");
+		}
+	}
+	
+	public static void SelectAssignmentsTest2() {
+		int[] weights = new int[] {23, 60, 25, 7}; 
+		int[] deadlines = new int[] {3, 1, 1, 3};
+		int m = weights.length;
+		HW_Sched schedule =  new HW_Sched(weights, deadlines, m);
+		int [] plan = schedule.SelectAssignments();
+		int [] result = {1, 0, 3};
+		if(Arrays.toString(plan).equals(Arrays.toString(result))) {
+			scoreHW ++;
+			System.out.println("HW_Sched.Test7 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("HW_Sched.Test7 failed. Pts[0 / 1]");
+		}
+	}
+	
+	public static void SelectAssignmentsTest3() {
+		int[] weights = new int[] {23, 60, 25, 7, 30}; 
+		int[] deadlines = new int[] {3, 1, 2, 3, 5};
+		int m = weights.length;
+		HW_Sched schedule =  new HW_Sched(weights, deadlines, m);
+		int [] plan = schedule.SelectAssignments();
+		int [] result = {1, 2, 0, 4, -1};
+		if(Arrays.toString(plan).equals(Arrays.toString(result))) {
+			scoreHW ++;
+			System.out.println("HW_Sched.Test8 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("HW_Sched.Test8 failed. Pts[0 / 1]");
+		}
+	}
+	
+	public static void SelectAssignmentsTest4() {
+		int[] weights = new int[] {10, 40, 80, 60, 70, 20, 100, 30, 50, 90}; 
+		int[] deadlines = new int[] {0, 1, 3, 9, 4, 3, 3, 5, 9, 6};
+		int m = weights.length;
+		HW_Sched schedule =  new HW_Sched(weights, deadlines, m);
+		int [] plan = schedule.SelectAssignments();
+		int [] result = {1, 6, 2, 4, 7, 9, 3, 8, -1};
+		//System.out.println(Arrays.toString(plan));
+		if(Arrays.toString(plan).equals(Arrays.toString(result))) {
+			scoreHW ++;
+			System.out.println("HW_Sched.Test9 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("HW_Sched.Test9 failed. Pts[0 / 1]");
+		}
+	}
+	
+	public static void SelectAssignmentsTest5() {
+		int[] weights = new int[] {10, 40, 80, 60, 70, 20, 100, 30, 50, 90}; 
+		int[] deadlines = new int[] {0, 0, 3, -1, 4, 0, 3, 5, 7, 6};
+		int m = weights.length;
+		HW_Sched schedule =  new HW_Sched(weights, deadlines, m);
+		int [] plan = schedule.SelectAssignments();
+		int [] result = {6, 2, 4, 7, 9, 8, -1};
+		//System.out.println(Arrays.toString(plan));
+		if(Arrays.toString(plan).equals(Arrays.toString(result))) {
+			scoreHW ++;
+			System.out.println("HW_Sched.Test10 succeed. Pts[1 / 1]");
+		}
+		else {
+			System.out.println("HW_Sched.Test10 failed. Pts[0 / 1]");
 		}
 	}
 }
