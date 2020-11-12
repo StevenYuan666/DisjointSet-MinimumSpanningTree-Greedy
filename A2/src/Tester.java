@@ -127,10 +127,10 @@ public class Tester {
 		DisjointSets myset5 = new DisjointSets(10);
 		myset5.union(1, 2);
 		myset5.union(0, 9);
-		myset5.union(2, 3);
+		myset5.union(2, 0);
 		myset5.union(0, 3);
-		if(myset5.find(1) == 2 && myset5.find(2) == 2 && myset5.find(3) == 2 &&
-				myset5.find(0) == 2 && myset5.find(9) == 2) {
+		if(myset5.find(1) == 9 && myset5.find(2) == 9 && myset5.find(3) == 9 &&
+				myset5.find(0) == 9 && myset5.find(9) == 9) {
 			score = 1;
 			scoreDisjoints ++;
 		}

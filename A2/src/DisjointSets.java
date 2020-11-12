@@ -81,7 +81,6 @@ public class DisjointSets {
     		}
     		else if(rank[find(i)] <= rank[find(j)]) {
     			par[find(i)] = find(j);
-    			return find(j);
     		}
     		else if(rank[find(i)] > rank[find(j)]){
     			par[find(j)] = find(i);
